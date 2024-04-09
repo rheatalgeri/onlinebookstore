@@ -9,32 +9,44 @@ import javax.persistence.Table;
 @Table(name="orderbook")
 public class OrderBook {
 
-	private Order order;
-	private List<Book> booklist;
+	private Long orderId;
+	private Long bookId;
+	private int bookQuantity;
 	
 	protected OrderBook() {
 		
 	}
 	
-	public OrderBook(Order order, List<Book> booklist) {
-		this.order = order;
-		this.booklist = booklist;
+	public OrderBook(Long orderId, Long bookId, int bookQuantity) {
+		this.bookId = bookId;
+		this.orderId = orderId;
+		this.bookQuantity = bookQuantity;
+	}
+
+	public Long getOrderId() {
+		return orderId;
+	}
+
+	public void setOrderId(Long orderId) {
+		this.orderId = orderId;
+	}
+
+	public Long getBookId() {
+		return bookId;
+	}
+
+	public void setBookId(Long bookId) {
+		this.bookId = bookId;
+	}
+
+	public int getBookQuantity() {
+		return bookQuantity;
+	}
+
+	public void setBookQuantity(int bookQuantity) {
+		this.bookQuantity = bookQuantity;
 	}
 	
-	public Order getOrder() {
-		return order;
-	}
 
-	public void setOrder(Order order) {
-		this.order = order;
-	}
-
-	public List<Book> getBooklist() {
-		return booklist;
-	}
-
-	public void setBooklist(List<Book> booklist) {
-		this.booklist = booklist;
-	}	
 	
 }

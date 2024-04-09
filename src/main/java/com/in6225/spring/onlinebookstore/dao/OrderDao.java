@@ -95,10 +95,7 @@ public class OrderDao {
 	}
 
     @SuppressWarnings("resource")
-	public Long insertOrder(Map<String, Object> requestData) throws SQLException {
-        Double amount = Double.parseDouble(String.valueOf(requestData.get("amount")));
-        String userId = requestData.get("userId").toString();
-        List<Book> booklist = (List<Book>) requestData.get("booklist");
+	public Long insertOrder(Double amount, String userId, List<Book>booklist) throws SQLException {
 
         Connection connection = null;
         PreparedStatement preparedStatement = null;
