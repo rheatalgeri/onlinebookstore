@@ -38,8 +38,8 @@
 <body>
 <jsp:include page="../header.jsp"></jsp:include>
     <div class="container">
-        <h1>User Created Successfully</h1>
-        <p>You can now login to your accountM! </p>
+        <h1>Account creation is successful!</h1>
+        <p>You can now login to your account! </p>
     </div>
     
 <jsp:include page="../footer.jsp"></jsp:include>    

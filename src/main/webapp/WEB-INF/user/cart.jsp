@@ -81,10 +81,12 @@
             <div class="d-grid d-md-flex justify-content-md-end" style="margin-top: 50px">
                 <input class="btn btn-primary me-md-2" type="button" onclick="location.href='<%=request.getContextPath()%>'"
                 value="Order More">
-                <form id="/orderconfirmation">
-	                <input class="btn btn-primary me-md-2" type="button" :disabled="!bookList.length"
-	                value="Confirm Now">
-                </form>
+				<form action="orderconfirmation" method="post">
+				    <input type="hidden" name="amount" :value="amount">
+				    <input type="hidden" name="booklist" :value="JSON.stringify(bookList)">
+				    <input class="btn btn-primary me-md-2" type="submit" :disabled="!bookList.length" value="Confirm Now">
+				</form>
+
             </div>
         </div>
     </div>
@@ -92,15 +94,24 @@
 
     <script type="text/javascript">
     const serverCartItems = <%=cartJson%>;
-      Vue.createApp({
+    Vue.createApp({
         data() {
             return {
-              bookList: serverCartItems,
+                bookList: serverCartItems,
+                amount: 0 
             }
-          },
+        },
         computed: {
-            amount() {
+            total() {
                 return this.bookList.reduce((total, book) => total + (book.price * book.quantity), 0).toFixed(2);
+            }
+        },
+        watch: {
+            bookList: {
+                deep: true,
+                handler() {
+                    this.amount = this.total; // Update totalValue to amount
+                }
             }
         },
         methods: {
@@ -111,7 +122,6 @@
                     if (index > -1) {
                         this.bookList.splice(index, 1);
                         localStorage.setItem("cart", JSON.stringify(this.bookList));
-                        
                     }
                 }
             },
@@ -128,7 +138,8 @@
                 return date;
             }
         },
-      }).mount('#app');
-    </script>
+    }).mount('#app');
+</script>
+
 </body>
 </html>
