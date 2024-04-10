@@ -33,8 +33,8 @@
 <header class="header-nav">
     <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container-fluid">
-            <a class="navbar-brand" href="/Bookstore">
-                <img src="your-book-icon.svg" alt="Bookstore Logo" width="30" height="24" class="d-inline-block align-text-top">
+            <a class="navbar-brand" href="<%=request.getContextPath()%>/backtouserdashboard">
+                <img src="<%=request.getContextPath()%>/resources/book.svg" alt="Book Icon">
                 Bookstore
             </a>
             <button class="navbar-toggler p-0 border-0" type="button" id="navbarSideCollapse"
@@ -44,17 +44,17 @@
 
             <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item"><a class="nav-link" aria-current="page" href="/Bookstore">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" aria-current="page" href="<%=request.getContextPath()%>/backtouserdashboard">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="<%=request.getContextPath()%>/genres">Genres</a></li>
                     <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/getbestsellers">Best Sellers</a></li>
 				    <li class="nav-item">
-				        <a href="<%=request.getContextPath()%>/cart" class="nav-link"><i class="fas fa-shopping-cart"></i> Cart</a>
+				        <a href="<%=request.getContextPath()%>/cart/view" class="nav-link"><i class="fas fa-shopping-cart"></i> Cart</a>
 				    </li>
 				</ul>   
                 </ul>                 
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a href="login.jsp" class="nav-link">Logout</a>
+                        <a href="<%=request.getContextPath()%>/logout" class="nav-link">Logout</a>
                     </li>     
                 </ul>                
                 

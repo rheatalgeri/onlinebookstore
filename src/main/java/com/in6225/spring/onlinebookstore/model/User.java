@@ -4,25 +4,33 @@ import java.util.List;
 
 public class User {
 
-	private String username;
+	private String userId;
 	private String password;
-	private String address;
+	private String email;
 	private String contactNo;
+	private String name;
 	
-	public String getUsername() {
-		return username;
+	public User(String userId, String email, String contactNo, String name) {
+		this.userId = userId;
+		this.email = email;
+		this.contactNo = contactNo;
+		this.setName(name);
 	}
 
-	public void setUsername(String username) {
-		this.username = username;
+	public String getUserId() {
+		return userId;
 	}
 
-	public String getAddress() {
-		return address;
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
 
-	public void setAddress(String address) {
-		this.address = address;
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String address) {
+		this.email = address;
 	}
 
 	public String getPassword() {
@@ -39,5 +47,13 @@ public class User {
 
 	public void setContactNo(String contactNo) {
 		this.contactNo = contactNo;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 }

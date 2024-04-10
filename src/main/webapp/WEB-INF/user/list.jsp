@@ -12,7 +12,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: 'Lora', serif; /* Bookstore theme font */
+            font-family: 'Lora', serif;
             background-color: #f4f4f4;
             margin: 0;
             padding: 0;
@@ -28,7 +28,7 @@
         h1 {
             text-align: center;
             margin-bottom: 20px;
-            color: #8B4513; /* Deep brown for the bookstore theme */
+            color: #8B4513;
         }
         table {
             width: 100%;
@@ -41,7 +41,7 @@
             border-bottom: 1px solid #ddd;
         }
         th {
-            background-color: #8B4513; /* Deep brown header */
+            background-color: #8B4513;
             color: white;
         }
         tr:nth-child(even) {
@@ -52,45 +52,44 @@
             background-color: #8B4513;
             border: none;
         }
-        /* Include font-awesome for icons */
         @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css');
     </style>
 </head>
 <body>
-    <jsp:include page="header.jsp"></jsp:include> <!-- Assuming header.jsp is in the same directory -->
+    <jsp:include page="header.jsp"></jsp:include>
     <div class="container">
         <h1>List of Books</h1>
-        <table class="table"> <!-- Bootstrap class added -->
+        <table class="table">
             <thead>
                 <tr>
                     <th>ID</th>
                     <th>Title</th>
                     <th>Description</th>
                     <th>Price</th>
-                    <th>Action</th> <!-- Added header cell for the action column -->
+                    <th>Action</th>
                 </tr>
             </thead>
-		    <tbody>
-		        <c:forEach var="book" items="${booklist}">
-		            <tr>
-		                <td>${book.bookId}</td>
-		                <td>${book.name}</td>
-		                <td>${book.description}</td>
-		                <td><fmt:formatNumber value="${book.price}" pattern="#,##0.00"/></td>
-		                <td> 
-		                    <form action="addToCart" method="post">
-		                        <input type="hidden" name="bookId" value="${book.bookId}">
-		                        <!-- Updated button with Bootstrap classes -->
-		                        <button type="submit" class="btn btn-primary btn-sm">
-		                            <i class="fas fa-shopping-cart"></i> Add to Cart
-		                        </button>
-		                    </form>
-		                </td>
-		            </tr>
-		        </c:forEach>
-		    </tbody>
+				<tbody>
+				    <c:forEach var="book" items="${booklist}">
+				        <tr>
+				            <td>${book.bookId}</td>
+				            <td>${book.name}</td>
+				            <td>${book.description}</td>
+				            <td><fmt:formatNumber value="${book.price}" pattern="#,##0.00"/></td>
+				            <td> 
+				                <form action="${pageContext.request.contextPath}/cart/add" method="post">
+				                    <input type="hidden" name="bookId" value="${book.bookId}">
+				                    <button type="submit" class="btn btn-primary btn-sm">
+				                        <i class="fas fa-shopping-cart"></i> Add to Cart
+				                    </button>
+				                </form>
+				            </td>
+				        </tr>
+				    </c:forEach>
+				</tbody>
+
         </table>
     </div>
-    <jsp:include page="../footer.jsp"></jsp:include> <!-- Adjust the path as needed -->
+    <jsp:include page="../footer.jsp"></jsp:include>
 </body>
 </html>

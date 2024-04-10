@@ -27,8 +27,8 @@
 <header class="header-nav">
     <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container-fluid">
-            <a class="navbar-brand" href="/Bookstore">
-                <img src="your-book-icon.svg" alt="Bookstore Logo" width="30" height="24" class="d-inline-block align-text-top">
+            <a class="navbar-brand" href="/index.jsp">
+                <img src="<%=request.getContextPath()%>/resources/book.svg" alt="Book Icon">
                 Bookstore
             </a>
             <button class="navbar-toggler p-0 border-0" type="button" id="navbarSideCollapse"
@@ -43,6 +43,9 @@
                     <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/getbestsellers">Best Sellers</a></li>
                 </ul>
                 <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a href="${pageContext.request.contextPath}/createuser.jsp" class="nav-link">Create Account</a>
+                    </li>                 
                     <li class="nav-item">
                         <a href="${pageContext.request.contextPath}/login.jsp" class="nav-link">Login</a>
                     </li>     

@@ -6,7 +6,7 @@
     <title>Login Page</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Lora', serif;
         }
         .container {
             width: 300px;

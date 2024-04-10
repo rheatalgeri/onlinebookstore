@@ -13,10 +13,6 @@ public class Book {
 	private String name;
 	private String description;
 	private Double price;
-	
-	protected Book() {
-		
-	}
 
 	public Book(Long bookId, String name, Double price) {
 		super();

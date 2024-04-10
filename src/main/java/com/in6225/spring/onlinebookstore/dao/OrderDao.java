@@ -36,8 +36,6 @@ public class OrderDao {
 	            Double amount = rs.getDouble("amount");
 	            Date dateTime = rs.getDate("createDateTime");
 	            String userId = rs.getString("userId");
-	            
-	            // Retrieve book details for the order
 	            List<Book> books = getBooksForOrder(orderId);
 
 	            orders.add(new Order(orderId, books, amount, dateTime, userId));

@@ -25,11 +25,8 @@ public class BookDao {
 
 	private static final String GET_BOOKS_BY_STRING = "SELECT bookId, name, price, description FROM book WHERE name LIKE ?";
 	private static final String GET_ALL_BOOKS = "SELECT bookId, name, price, description FROM book";
-    private static final String BEST_SELLERS_QUERY = "SELECT bookId, SUM(quantity) AS total_sold "
-            + "FROM orders "
-            + "GROUP BY bookId "
-            + "ORDER BY total_sold DESC "
-            + "LIMIT 3";
+    private static final String BEST_SELLERS_QUERY = "SELECT bookId, SUM(quantity) AS total_sold FROM orders GROUP BY bookId ORDER BY total_sold DESC LIMIT 3";
+    private static final String GET_BOOKS_BY_ID = "SELECT name, price, description FROM book WHERE bookId LIKE ?";
 
     public List<Book> getAllBooks() {
     	List<Book> books = new ArrayList<Book>();
@@ -89,10 +86,33 @@ public class BookDao {
 
         } catch (SQLException e) {
             e.printStackTrace();
-            // Handle exception
         }
 
         return bestSellers;
     }
+
+	public Book findBookById(Long bookId) {
+
+		try (Connection connection = JDBCUtils.getConnection();
+				PreparedStatement preparedStatement = connection.prepareStatement(GET_BOOKS_BY_ID);) {
+			
+			preparedStatement.setLong(1, bookId);
+			ResultSet rs = preparedStatement.executeQuery();
+			
+	        if (rs.next()) {
+	            String name = rs.getString("name");
+	            Double price = rs.getDouble("price");
+	            String description = rs.getString("description");
+	            
+	            return new Book(bookId, name, price, description);
+	        }
+			
+		} catch (SQLException exception) {
+			JDBCUtils.printSQLException(exception);
+		}
+
+		return null;
+	}
+
     
 }

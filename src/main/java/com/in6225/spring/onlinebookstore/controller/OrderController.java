@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.in6225.spring.onlinebookstore.dao.BookDao;
 import com.in6225.spring.onlinebookstore.dao.OrderDao;
@@ -32,6 +33,19 @@ public class OrderController {
         List<Order> orderList = orderDAO.getAllOrders();
         model.addAttribute("orderlist", orderList);
         return "admin/listorders";
+    }
+    
+    @GetMapping("/orderconfirmation")
+    private String orderConfirmation(@RequestParam("amount") Double amount, @RequestParam("userId") String userId,  @RequestParam("booklist") List<Book>booklist) {
+    	try {
+    		
+	        orderDAO.insertOrder(amount, userId, booklist);    
+	        return "user/orderconfirmation";
+    	
+    	} catch (Exception e) {
+    		
+    		return "user/orderfailure";
+    	}
     }
 
 }

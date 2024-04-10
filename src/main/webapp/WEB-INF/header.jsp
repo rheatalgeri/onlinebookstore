@@ -28,7 +28,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container-fluid">
             <a class="navbar-brand" href="/Bookstore">
-                <img src="your-book-icon.svg" alt="Bookstore Logo" width="30" height="24" class="d-inline-block align-text-top">
+                <img src="<%=request.getContextPath()%>/resources/book.svg" alt="Book Icon">
                 Bookstore
             </a>
             <button class="navbar-toggler p-0 border-0" type="button" id="navbarSideCollapse"

@@ -1,5 +1,7 @@
 package com.in6225.spring.onlinebookstore.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,17 +22,19 @@ public class LoginController {
     private LoginDao loginDao;
 
     @GetMapping("/logingin")
-    public String authenticate(@RequestParam("username") String username, @RequestParam("password") String password) {
+    public String authenticate(@RequestParam("username") String username, @RequestParam("password") String password, HttpSession session) {
         LoginBean loginBean = new LoginBean();
         loginBean.setUsername(username);
         loginBean.setPassword(password);
 
         try {
             if (loginDao.validate(loginBean)&&isAdmin(username,password)) {
+            	session.setAttribute("userId", username);
                 return "admin/admindashboard";
             } 
             else if(loginDao.validate(loginBean)) 
             {
+            	session.setAttribute("userId", username);
             	return "user/userdashboard";
             }
             else 
@@ -49,6 +53,11 @@ public class LoginController {
         String adminPassword = "admin";
     
         return username.equals(adminUsername) && password.equals(adminPassword);
+    }
+    
+    public String logout(HttpSession session) {
+        session.invalidate(); 
+        return "redirect:/login"; 
     }
 }
 

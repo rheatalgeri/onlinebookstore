@@ -27,8 +27,8 @@
 <header class="header-nav">
     <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container-fluid">
-            <a class="navbar-brand" href="/Bookstore">
-                <img src="iconServlet" alt="Bookstore Logo" width="30" height="24" class="d-inline-block align-text-top">
+            <a class="navbar-brand" href="<%=request.getContextPath()%>/backtoadmindashboard">
+                <img src="<%=request.getContextPath()%>/resources/book.svg" alt="Book Icon">
                 Bookstore
             </a>
             <button class="navbar-toggler p-0 border-0" type="button" id="navbarSideCollapse"
@@ -45,6 +45,11 @@
 					<li class="nav-item">
 					    <a class="nav-link" href="#" onclick="document.getElementById('getBooksForm').submit()">Books</a>
 					    <form id="getBooksForm" action="getallbooks" method="get" style="display: none;"></form>
+					</li>
+					<li class="nav-item">
+					    <a class="nav-link" href="#" onclick="document.getElementById('getUsersForm').submit()">Users</a>
+					    <form id="getUsersForm" action="getallusers" method="get" style="display: none;"></form>
+					</li>
                 </ul>
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
