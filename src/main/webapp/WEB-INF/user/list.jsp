@@ -10,6 +10,7 @@
     <!-- Include Bootstrap CSS and Google Fonts for styling -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <style>
         body {
             font-family: 'Lora', serif;
@@ -76,13 +77,13 @@
 				            <td>${book.name}</td>
 				            <td>${book.description}</td>
 				            <td><fmt:formatNumber value="${book.price}" pattern="#,##0.00"/></td>
-				            <td> 
-				                <form action="${pageContext.request.contextPath}/cart/add" method="post">
-				                    <input type="hidden" name="bookId" value="${book.bookId}">
-				                    <button type="submit" class="btn btn-primary btn-sm">
-				                        <i class="fas fa-shopping-cart"></i> Add to Cart
-				                    </button>
-				                </form>
+				            <td> 				       
+								<form id="/cart/add" action="${pageContext.request.contextPath}/cart/add" method="post">
+								    <input type="hidden" name="bookId" value="${book.bookId}">
+								    <button type="button" onclick="addToCart()" class="btn btn-primary btn-sm">
+								        <i class="fas fa-shopping-cart"></i> Add to Cart
+								    </button>
+								</form>				                
 				            </td>
 				        </tr>
 				    </c:forEach>
@@ -91,5 +92,22 @@
         </table>
     </div>
     <jsp:include page="../footer.jsp"></jsp:include>
+    <script>
+	function addToCart() {
+	    var form = document.getElementById('add-to-cart-form');
+	    var formData = new FormData(form);
+	
+	    fetch('${pageContext.request.contextPath}/cart/add', {
+	        method: 'POST',
+	        body: formData
+	    })
+	    .then(response => response.text())
+	    .then(data => {
+	        alert('Item added to cart!');
+	        // Optionally update parts of your page here if needed.
+	    })
+	    .catch(error => console.error('Error adding item to cart:', error));
+	}
+	</script>
 </body>
 </html>

@@ -55,9 +55,10 @@ public class LoginController {
         return username.equals(adminUsername) && password.equals(adminPassword);
     }
     
+    @GetMapping("/logout")
     public String logout(HttpSession session) {
         session.invalidate(); 
-        return "redirect:/login"; 
+        return "login"; 
     }
 }
 

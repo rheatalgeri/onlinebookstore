@@ -39,7 +39,6 @@
             <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item"><a class="nav-link" aria-current="page" href="/Bookstore">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="<%=request.getContextPath()%>/genres">Genres</a></li>
                     <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/getbestsellers">Best Sellers</a></li>
                 </ul>
                 <ul class="navbar-nav ml-auto">

@@ -11,16 +11,16 @@ public class OrderBook {
 
 	private Long orderId;
 	private Long bookId;
-	private int bookQuantity;
+	private int quantity;
 	
 	protected OrderBook() {
 		
 	}
 	
-	public OrderBook(Long orderId, Long bookId, int bookQuantity) {
+	public OrderBook(Long orderId, Long bookId, int quantity) {
 		this.bookId = bookId;
 		this.orderId = orderId;
-		this.bookQuantity = bookQuantity;
+		this.quantity = quantity;
 	}
 
 	public Long getOrderId() {
@@ -39,12 +39,12 @@ public class OrderBook {
 		this.bookId = bookId;
 	}
 
-	public int getBookQuantity() {
-		return bookQuantity;
+	public int getQuantity() {
+		return quantity;
 	}
 
-	public void setBookQuantity(int bookQuantity) {
-		this.bookQuantity = bookQuantity;
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
 	}
 	
 

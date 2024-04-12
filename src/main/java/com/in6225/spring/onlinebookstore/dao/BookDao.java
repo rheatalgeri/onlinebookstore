@@ -113,6 +113,31 @@ public class BookDao {
 
 		return null;
 	}
+	
+	public List<Book> findBooksById(List<Long> bookIds) {
+		List<Book>booklist= new ArrayList<Book>();
+		
+		try (Connection connection = JDBCUtils.getConnection();
+				PreparedStatement preparedStatement = connection.prepareStatement(GET_BOOKS_BY_ID);) {
+			for(Long bookId: bookIds) {
+			preparedStatement.setLong(1, bookId);
+			ResultSet rs = preparedStatement.executeQuery();
+			
+	        if (rs.next()) {
+	            String name = rs.getString("name");
+	            Double price = rs.getDouble("price");
+	            String description = rs.getString("description");
+	            
+	            booklist.add(new Book(bookId, name, price, description));
+	        }
+	        return booklist;
+			}
+			
+		} catch (SQLException exception) {
+			JDBCUtils.printSQLException(exception);
+		}
 
+		return null;
+	}
     
 }

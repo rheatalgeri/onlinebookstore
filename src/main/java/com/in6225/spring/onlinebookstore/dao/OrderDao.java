@@ -13,6 +13,7 @@ import org.springframework.stereotype.Repository;
 
 import com.in6225.spring.onlinebookstore.model.Book;
 import com.in6225.spring.onlinebookstore.model.Order;
+import com.in6225.spring.onlinebookstore.model.OrderBook;
 import com.in6225.spring.onlinebookstore.utils.JDBCUtils;
 
 @Repository
@@ -23,6 +24,7 @@ public class OrderDao {
 	private static final String GET_BOOKS_FOR_ORDER = "SELECT b.bookId, b.name, b.description, b.price FROM orderbook ob INNER JOIN book b ON ob.bookId = b.bookId WHERE ob.orderId = ?";
 	private static final String INSERT_ORDER = "INSERT INTO orders (orderId, userId, amount, createDateTime) VALUES (?, ?, ?, ?)";
 	private static final String INSERT_ORDERBOOK = "INSERT INTO bookorder (orderId, bookId) VALUES (?, ?)";
+	private static final String GET_ORDERS_BY_USER = "SELECT orderId, userId, amount, createDateTime FROM orders WHERE userId = ?";
 	
 	public List<Order> getAllOrders() {
 	    List<Order> orders = new ArrayList<>();
@@ -92,51 +94,76 @@ public class OrderDao {
 	    return books;
 	}
 
-    @SuppressWarnings("resource")
-	public Long insertOrder(Double amount, String userId, List<Book>booklist) throws SQLException {
+    public Long insertOrder(Double amount, String userId, List<OrderBook> booklist) throws SQLException {
+        String INSERT_ORDER = "INSERT INTO orders(userid, amount, createdatetime) VALUES (?, ?, ?)";
 
-        Connection connection = null;
-        PreparedStatement preparedStatement = null;
-        ResultSet resultSet = null;
+        try (Connection connection = JDBCUtils.getConnection()) {
+            connection.setAutoCommit(false); 
 
-        try {
-           
-            connection = JDBCUtils.getConnection();
-            preparedStatement = connection.prepareStatement(INSERT_ORDER, PreparedStatement.RETURN_GENERATED_KEYS);
-            preparedStatement.setString(1, userId);
-            preparedStatement.setDouble(2, amount);
-            preparedStatement.setTimestamp(3, new java.sql.Timestamp(System.currentTimeMillis()));
-            preparedStatement.executeUpdate();
-
-            // Get the generated order ID
-            Long orderId = null;
-            resultSet = preparedStatement.getGeneratedKeys();
-            if (resultSet.next()) {
-                orderId = resultSet.getLong(1);
-            } else {
-                throw new SQLException("Failed to retrieve generated order ID.");
-            }
-
-            preparedStatement = connection.prepareStatement(INSERT_ORDERBOOK);
-            for (Book book : booklist) {
-                preparedStatement.setLong(1, orderId);
-                preparedStatement.setLong(2, book.getBookId());
+            try (PreparedStatement preparedStatement = connection.prepareStatement(INSERT_ORDER, PreparedStatement.RETURN_GENERATED_KEYS)) {
+                preparedStatement.setString(1, userId);
+                preparedStatement.setDouble(2, amount);
+                preparedStatement.setTimestamp(3, new java.sql.Timestamp(System.currentTimeMillis()));
                 preparedStatement.executeUpdate();
-            }
 
-            return orderId;
-        } finally {
-            if (resultSet != null) {
+                ResultSet resultSet = preparedStatement.getGeneratedKeys();
+                Long orderId = null;
+                if (resultSet.next()) {
+                    orderId = resultSet.getLong(1);
+                    System.out.println(orderId);
+                } else {
+                    throw new SQLException("Failed to retrieve generated order ID.");
+                }
                 resultSet.close();
-            }
-            if (preparedStatement != null) {
-                preparedStatement.close();
-            }
-            if (connection != null) {
-                connection.close();
+
+                for (OrderBook orderBook : booklist) {
+                    orderBook.setOrderId(orderId); 
+                    insertOrderBook(connection, orderBook);
+                }
+
+                connection.commit();
+                return orderId;
+            } catch (Exception e) {
+                connection.rollback();
+                throw e;
             }
         }
     }
+
+    private void insertOrderBook(Connection connection, OrderBook orderBook) throws SQLException {
+        String INSERT_ORDERBOOK = "INSERT INTO orderbook(orderId, bookId, bookQuantity) VALUES (?, ?, ?)";
+        try (PreparedStatement orderBookStmt = connection.prepareStatement(INSERT_ORDERBOOK)) {
+            orderBookStmt.setLong(1, orderBook.getOrderId());
+            orderBookStmt.setLong(2, orderBook.getBookId());
+            orderBookStmt.setInt(3, orderBook.getQuantity());
+            orderBookStmt.executeUpdate();
+        }
+    }
+
+
+
+	public List<Order> getOrdersByUser(String userId) {
+	    List<Order> orders = new ArrayList<>();
+	    Connection connection = JDBCUtils.getConnection();
+	    try (PreparedStatement preparedStatement = connection.prepareStatement(GET_ORDERS_BY_USER)){
+	    		preparedStatement.setString(1, userId);
+
+	         ResultSet rs = preparedStatement.executeQuery();
+
+	        while (rs.next()) {
+	            Long orderId = rs.getLong("orderId");
+	            Double amount = rs.getDouble("amount");
+	            Date dateTime = rs.getDate("createDateTime");
+	            List<Book> books = getBooksForOrder(orderId);
+
+	            orders.add(new Order(orderId, books, amount, dateTime, userId));
+	        }
+	    } catch (SQLException exception) {
+	        JDBCUtils.printSQLException(exception);
+	    }
+
+	    return orders;
+	}
 
 
 }

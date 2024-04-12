@@ -2,6 +2,7 @@ package com.in6225.spring.onlinebookstore.controller;
 
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,8 +22,8 @@ public class CartController {
     @Autowired
     private BookDao bookDao;
 
-    @PostMapping("/add")
-    public String addToCart(@RequestParam("bookId") Long bookId, HttpSession session) {
+    @PostMapping("/cart/add")
+    public ResponseEntity<?> addToCart(@RequestParam("bookId") Long bookId, HttpSession session) {
         Cart cart = (Cart) session.getAttribute("cart");
         if (cart == null) {
             cart = new Cart();
@@ -35,11 +36,10 @@ public class CartController {
             item.setBookId(bookId);
             item.setQuantity(1);
             item.setPrice(book.getPrice());
-
             cart.addItem(item);
         }
 
-        return "redirect:/cart/view";
+        return ResponseEntity.ok("Item added to cart");
     }
 
     @GetMapping("/view")
