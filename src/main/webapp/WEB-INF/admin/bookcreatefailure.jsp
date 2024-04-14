@@ -4,7 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Dashboard</title>
+    <title>Bookstore - User Created Successfully</title>
+    <!-- Include Bootstrap CSS and Google Fonts for styling -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Lora', serif;
@@ -23,36 +26,22 @@
         h1 {
             text-align: center;
             margin-bottom: 20px;
-            color: #333;
+            color: #8B4513;
         }
-        .btn-container {
+        p {
             text-align: center;
-            margin-top: 20px;
+            color: #007bff;
         }
-        .btn {
-            padding: 10px 20px;
-            background-color: #007bff;
-            color: #fff;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            margin-right: 10px;
-        }
-        .btn:hover {
-            background-color: #0056b3;
-        }
+        /* Add more styling here as needed */
     </style>
 </head>
 <body>
-<jsp:include page="adminheader.jsp"></jsp:include> 
+<jsp:include page="adminheader.jsp"></jsp:include>
     <div class="container">
-        <h1>Admin Dashboard</h1>
-        <div class="btn-container">
-            <form action="newbook" method="get">
-            <button type="submit">Add New Book</button>
-            </form>
-        </div>
+        <h1>Book addition failed</h1>
+        <p>Please try again :(</p>
     </div>
+    
 <jsp:include page="../footer.jsp"></jsp:include>    
 </body>
 </html>

@@ -8,14 +8,14 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="order")
+@Table(name="orders")
 public class Order {
 	
 	@Id
     private Long orderId;
     private List<Book> bookList;
     private Double amount;
-    private Date createDatetime;
+    private Date createDateTime;
     private String userId;
 
     
@@ -24,18 +24,18 @@ public class Order {
         this.bookList = bookList;
     }
 
-    public Order(Long orderId,  List<Book> bookList, Double amount, Date createDatetime, String userId) {
+    public Order(Long orderId,  List<Book> bookList, Double amount, Date createDateTime, String userId) {
         this.orderId = orderId;
         this.bookList = bookList;
         this.amount = amount;
-        this.createDatetime = createDatetime;
+        this.createDateTime = createDateTime;
         this.userId = userId;
     }
     
-    public Order(List<Book> bookList, Double amount, Date createDatetime, String userId) {
+    public Order(List<Book> bookList, Double amount, Date createDateTime, String userId) {
         this.bookList = bookList;
         this.amount = amount;
-        this.createDatetime = createDatetime;
+        this.createDateTime = createDateTime;
         this.userId = userId;
     }
     protected Order() {
@@ -60,12 +60,12 @@ public class Order {
         this.amount = amount;
     }
 
-    public Date getCreateDatetime() {
-        return createDatetime;
+    public Date getCreateDateTime() {
+        return createDateTime;
     }
 
-    public void setCreateDatetime(Date createDatetime) {
-        this.createDatetime = createDatetime;
+    public void setCreateDatetime(Date createDateTime) {
+        this.createDateTime = createDateTime;
     }
 
     @Override

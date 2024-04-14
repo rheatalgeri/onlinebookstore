@@ -17,6 +17,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import com.in6225.spring.onlinebookstore.model.Book;
+import com.in6225.spring.onlinebookstore.model.OrderBook;
 import com.in6225.spring.onlinebookstore.utils.HibernateUtil;
 import com.in6225.spring.onlinebookstore.utils.JDBCUtils;
 
@@ -27,7 +28,7 @@ public class BookDao {
 	private static final String GET_ALL_BOOKS = "SELECT bookId, name, price, description FROM book";
     private static final String BEST_SELLERS_QUERY = "SELECT bookId, SUM(quantity) AS total_sold FROM orders GROUP BY bookId ORDER BY total_sold DESC LIMIT 3";
     private static final String GET_BOOKS_BY_ID = "SELECT name, price, description FROM book WHERE bookId LIKE ?";
-
+    private static final String ADD_NEW_BOOK = "INSERT INTO book (name, description, price) VALUES (?, ?, ?)";
     public List<Book> getAllBooks() {
     	List<Book> books = new ArrayList<Book>();
 
@@ -139,5 +140,21 @@ public class BookDao {
 
 		return null;
 	}
+
+	public void createBook(String bookName, String description, Double price) {
+            try (Connection connection = JDBCUtils.getConnection();
+    				PreparedStatement preparedStatement = connection.prepareStatement(ADD_NEW_BOOK);) {
+                preparedStatement.setString(1, bookName);
+                preparedStatement.setString(2, description);
+                preparedStatement.setDouble(3, price);
+                preparedStatement.executeUpdate();
+
+                connection.commit();
+            }  catch (SQLException exception) {
+    			JDBCUtils.printSQLException(exception);
+    		}
+        }		
+		
+	
     
 }

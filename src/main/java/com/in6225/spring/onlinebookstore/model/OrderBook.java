@@ -23,6 +23,11 @@ public class OrderBook {
 		this.quantity = quantity;
 	}
 
+	public OrderBook(Long bookId, int quantity) {
+		this.bookId = bookId;
+		this.quantity = quantity;
+	}
+
 	public Long getOrderId() {
 		return orderId;
 	}

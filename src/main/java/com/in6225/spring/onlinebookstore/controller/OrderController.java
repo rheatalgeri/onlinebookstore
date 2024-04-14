@@ -41,8 +41,8 @@ public class OrderController {
     @GetMapping("/getallorders")
     private String listAllBooks(Model model)
             throws SQLException, IOException, ServletException {
-        List<Order> orderList = orderDAO.getAllOrders();
-        model.addAttribute("orderlist", orderList);
+        List<Order> orders = orderDAO.getAllOrders();
+        model.addAttribute("orders", orders);
         return "admin/listorders";
     }
     
@@ -67,9 +67,9 @@ public class OrderController {
     private String userOrders(Model model, HttpSession session)
             throws SQLException, IOException, ServletException {
     	String userId = (String) session.getAttribute("userId");
-        List<Order> orderList = orderDAO.getOrdersByUser(userId);
-        model.addAttribute("orderlist", orderList);
-        return "admin/listorders";
+        List<Order> orders = orderDAO.getOrdersByUser(userId);
+        model.addAttribute("orders", orders);
+        return "user/listorders";
     }
 
 }

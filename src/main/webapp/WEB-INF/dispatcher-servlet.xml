@@ -24,7 +24,7 @@
 	
 	<bean
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource"
-		name="dataSource" p:driverClassName="com.mysql.jdbc.Driver"
+		name="dataSource" p:driverClassName="com.mysql.cj.jdbc.Driver"
 		p:url="jdbc:mysql://localhost/onlinebs?useSSL=false" p:username="root"
 		p:password="1234" />	
 		

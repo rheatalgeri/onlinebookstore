@@ -52,5 +52,21 @@ public class BookController {
         model.addAttribute("booklist", bookList);
         return "bestsellers";
     }
- 
+    
+    @GetMapping("/newbook")
+    private String addNewBook()
+            throws SQLException, IOException, ServletException {
+        return "admin/newbook";
+    }
+
+	@GetMapping("/createbook")
+    public String createBook(@RequestParam("bookName") String bookName, @RequestParam("description") String description, @RequestParam("price") Double price ) {
+		try {
+			bookDAO.createBook(bookName, description, price);
+			return "admin/bookcreatesuccess";
+			
+		} catch (Exception e) {
+			return "admin/bookcreatefailure";
+		}
+    }
 }

@@ -5,7 +5,6 @@
 <html>
 <head>
     <title>Order List</title>
-    <link href="https://fonts.googleapis.com/css?family=Merriweather|Montserrat:400,700&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Merriweather', serif;
@@ -49,8 +48,8 @@
     </style>
 </head>
 <body>
-<jsp:include page="adminheader.jsp"></jsp:include>
-    <h1>List of Orders</h1>
+<jsp:include page="header.jsp"></jsp:include> 
+    <h2>List of Orders</h2>
     <c:forEach var="order" items="${orders}">
         <div class="order-header">
             <h2>Order ID: ${order.orderId} - User ID: ${order.userId}</h2>
