@@ -6,14 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.ModelAndView;
 
 import com.in6225.spring.onlinebookstore.dao.LoginDao;
 import com.in6225.spring.onlinebookstore.model.LoginBean;
-//import com.in6225.spring.onlinebookstore.utils.UtilHelper;
-
 
 @Controller
 public class LoginController {
@@ -21,7 +17,7 @@ public class LoginController {
     @Autowired
     private LoginDao loginDao;
 
-    @GetMapping("/logingin")
+    @PostMapping("/logingin")
     public String authenticate(@RequestParam("username") String username, @RequestParam("password") String password, HttpSession session) {
         LoginBean loginBean = new LoginBean();
         loginBean.setUsername(username);
