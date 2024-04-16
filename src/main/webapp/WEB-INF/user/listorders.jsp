@@ -52,7 +52,7 @@
     <h2>List of Orders</h2>
     <c:forEach var="order" items="${orders}">
         <div class="order-header">
-            <h2>Order ID: ${order.orderId} - User ID: ${order.userId}</h2>
+            <h2>Order ID: ${order.orderId}</h2>
             <div>Amount: $${order.amount}</div>
             <div>Date: <c:out value="${order.createDateTime}" /></div>
         </div>

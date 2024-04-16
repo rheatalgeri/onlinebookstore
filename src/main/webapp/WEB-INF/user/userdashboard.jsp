@@ -54,12 +54,9 @@
 <body>
 	<jsp:include page="header.jsp"></jsp:include>
     <div class="container">
-        <h2>Welcome to Your Dashboard, ${user.username}!</h2>
+        <h2>Welcome to Your Dashboard, ${sessionScope.userId}!</h2>
 
         <div>
-            <h3>Your Orders</h3>
-            
-
         <form action="listbystring" method="get" class="search-form">
             <input type="text" name="searchString" placeholder="Search for books...">
             <button type="submit">Search</button>

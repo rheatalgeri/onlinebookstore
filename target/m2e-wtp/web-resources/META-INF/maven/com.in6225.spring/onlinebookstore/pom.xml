@@ -47,7 +47,11 @@
 		<artifactId>mysql-connector-java</artifactId>
 		<version>8.0.20</version>
 	</dependency>
-
+<dependency>
+    <groupId>javax.servlet</groupId>
+    <artifactId>servlet-api</artifactId>
+    <version>2.5</version>
+</dependency>
 	<!-- API, java.xml.bind module -->
 	<dependency>
 	    <groupId>jakarta.xml.bind</groupId>
@@ -78,6 +82,7 @@
         <artifactId>javax.servlet.jsp.jstl-api</artifactId>
         <version>1.2.1</version>
     </dependency>
+    
     <dependency>
         <groupId>taglibs</groupId>
         <artifactId>standard</artifactId>

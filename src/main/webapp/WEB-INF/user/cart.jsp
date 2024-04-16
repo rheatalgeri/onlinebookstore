@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page import="com.in6225.spring.onlinebookstore.model.CartItem"%>
 <%@ page import="com.google.gson.Gson"%>
 <%@ page import="java.util.List"%> <!-- Ensure this is added if you are using lists -->
@@ -115,16 +116,13 @@
 						</form>
 						</div>
                     </td>
+                     <c:set var="total" value="${total + (cartItem.price * cartItem.quantity)}" scope="request" />
                 </tr>
             </c:forEach>
                 <tr>
         <td colspan="3" style="text-align: right;"><strong>Total:</strong></td>
         <td>
-            <c:set var="total" value="0" />
-            <c:forEach var="cartItem" items="${cartItems}" varStatus="status">
-                <c:set var="total" value="${total + (cartItem.price * cartItem.quantity)}" />
-            </c:forEach>
-            $<c:out value="${total}" />
+        	$<fmt:formatNumber value="${total}" pattern="#,##0.00"/>
         </td>
         <td></td>
     </tr>
