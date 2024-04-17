@@ -3,12 +3,7 @@ package com.in6225.spring.onlinebookstore.dao;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
 
-import org.hibernate.Session;
-//import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
-import org.hibernate.query.Query;
 import org.springframework.stereotype.Repository;
 
 import java.sql.Connection;
@@ -18,7 +13,6 @@ import java.sql.SQLException;
 
 import com.in6225.spring.onlinebookstore.model.Book;
 import com.in6225.spring.onlinebookstore.model.OrderBook;
-import com.in6225.spring.onlinebookstore.utils.HibernateUtil;
 import com.in6225.spring.onlinebookstore.utils.JDBCUtils;
 
 @Repository
