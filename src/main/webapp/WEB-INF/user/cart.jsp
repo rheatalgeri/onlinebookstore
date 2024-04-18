@@ -3,12 +3,12 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page import="com.in6225.spring.onlinebookstore.model.CartItem"%>
 <%@ page import="com.google.gson.Gson"%>
-<%@ page import="java.util.List"%> <!-- Ensure this is added if you are using lists -->
+<%@ page import="java.util.List"%>
 
 <!DOCTYPE html>
 <html>
 <head>
-<script src="https://use.fontawesome.com/releases/v5.15.1/js/all.js"></script> <!-- For the trash icon -->
+<script src="https://use.fontawesome.com/releases/v5.15.1/js/all.js"></script> 
 <style>
 
 .container {
@@ -94,7 +94,7 @@
             </tr>
         </thead>
         <tbody>
-            <c:forEach var="cartItem" items="${cartItems}"> <!-- Ensure this matches the attribute name used in the model -->
+            <c:forEach var="cartItem" items="${cartItems}"> 
                 <tr>
                     <td>${cartItem.bookId}</td>
                     <td>${cartItem.bookName}</td>

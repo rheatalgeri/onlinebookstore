@@ -45,14 +45,6 @@ public class BookController {
         return "admin/list";
     }
     
-    @GetMapping("/getbestsellers")
-    private String getBestSellers(Model model)
-            throws SQLException, IOException, ServletException {
-        List<Book> bookList = bookDAO.getAllBooks();
-        model.addAttribute("booklist", bookList);
-        return "bestsellers";
-    }
-    
     @GetMapping("/newbook")
     private String addNewBook()
             throws SQLException, IOException, ServletException {
@@ -69,4 +61,16 @@ public class BookController {
 			return "admin/bookcreatefailure";
 		}
     }
+	
+	@GetMapping("/viewbook")
+    public String viewBook(@RequestParam("bookId") long bookId, Model model) {
+		try {
+			Book book = bookDAO.findBookById(bookId);
+			model.addAttribute(book);
+			return "user/book";
+			
+		} catch (Exception e) {
+			return "admin/bookcreatefailure";
+		}
+    }	
 }

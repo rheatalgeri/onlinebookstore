@@ -66,25 +66,6 @@ public class BookDao {
 
 		return books;
     }
-    
-    public List<String> getBestSellers() {
-        List<String> bestSellers = new ArrayList<>();
-
-        try (Connection connection = JDBCUtils.getConnection();
-             PreparedStatement preparedStatement = connection.prepareStatement(BEST_SELLERS_QUERY);
-             ResultSet resultSet = preparedStatement.executeQuery()) {
-
-            while (resultSet.next()) {
-                String bookId = resultSet.getString("bookId");
-                bestSellers.add(bookId);
-            }
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-        return bestSellers;
-    }
 
 	public Book findBookById(Long bookId) {
 

@@ -8,7 +8,7 @@
     <link href="https://fonts.googleapis.com/css?family=Merriweather|Montserrat:400,700&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: 'Merriweather', serif;
+            font-family: 'Lora', serif;
             background-color: #fafafa;
             color: #333;
             line-height: 1.6;
@@ -16,7 +16,7 @@
             padding: 20px;
         }
         h1, h2, h3 {
-            font-family: 'Montserrat', sans-serif;
+            font-family: 'Lora', serif;
             color: #5D4037;
         }
         .order-table, .book-table {

@@ -41,6 +41,19 @@
         .btn:hover {
             background-color: #0056b3;
         }
+	    .custom-submit {
+	        background-color: #8B4513;
+	        color: white;
+	        border: none;
+	        padding: 10px 20px;
+	        margin-top: 10px;
+	        width: 100%;
+	        border-radius: 4px;
+	        cursor: pointer;
+	    }
+	    .custom-submit:hover {
+	        background-color: #A0522D;
+	    }        
     </style>
 </head>
 <body>
@@ -49,7 +62,7 @@
         <h1>Admin Dashboard</h1>
         <div class="btn-container">
             <form action="newbook" method="get">
-            <button type="submit">Add New Book</button>
+            <button class="btn custom-submit" type="submit">Add New Book</button>
             </form>
         </div>
     </div>

@@ -7,7 +7,7 @@
     <title>Order List</title>
     <style>
         body {
-            font-family: 'Merriweather', serif;
+            font-family: 'Lora', serif;
             background-color: #fafafa;
             color: #333;
             line-height: 1.6;
@@ -15,7 +15,7 @@
             padding: 20px;
         }
         h1, h2, h3 {
-            font-family: 'Montserrat', sans-serif;
+            font-family: 'Lora', serif;
             color: #5D4037;
         }
         .order-table, .book-table {

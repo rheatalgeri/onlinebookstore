@@ -63,7 +63,7 @@
     </style>
 </head>
 <body>
-<jsp:include page="header.jsp"></jsp:include>
+<jsp:include page="/WEB-INF/header.jsp"></jsp:include>
     <div class="container">
         <h1>Welcome to the Online Bookstore</h1>
         <form action="listbystring" method="get" class="search-form">

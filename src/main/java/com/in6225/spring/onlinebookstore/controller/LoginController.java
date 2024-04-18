@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.in6225.spring.onlinebookstore.dao.LoginDao;
 import com.in6225.spring.onlinebookstore.model.LoginBean;
@@ -18,7 +19,7 @@ public class LoginController {
     private LoginDao loginDao;
 
     @PostMapping("/logingin")
-    public String authenticate(@RequestParam("username") String username, @RequestParam("password") String password, HttpSession session) {
+    public String authenticate(@RequestParam("username") String username, @RequestParam("password") String password, HttpSession session, RedirectAttributes redirectAttributes) {
         LoginBean loginBean = new LoginBean();
         loginBean.setUsername(username);
         loginBean.setPassword(password);
@@ -35,7 +36,8 @@ public class LoginController {
             }
             else 
             {
-            	return "login";
+                redirectAttributes.addFlashAttribute("error", "Login has failed. Please try again.");
+                return "redirect:/login";
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -56,5 +58,10 @@ public class LoginController {
         session.invalidate(); 
         return "login"; 
     }
+    
+    @GetMapping("/login")
+    public String showLoginPage() {
+        return "login";
+    }    
 }
 

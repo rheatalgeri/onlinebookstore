@@ -7,7 +7,7 @@
     <title>User Dashboard</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Lora', serif;
             background-color: #f4f4f4;
             margin: 0;
             padding: 0;
@@ -26,29 +26,37 @@
         h3 {
             color: #666;
         }
-        form {
-            margin-bottom: 20px;
-        }
-        input[type="text"] {
-            padding: 10px;
-            width: 70%;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            font-size: 16px;
-            margin-right: 10px;
-        }
-        button[type="submit"] {
-            padding: 10px 20px;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 16px;
-        }
-        button[type="submit"]:hover {
-            background-color: #45a049;
-        }
+            .navbar {
+        background-color: #8B4513; 
+    }
+    .navbar-brand, .nav-link {
+        color: #FFF8DC !important; 
+    }
+	    .form-container {
+	        max-width: 400px;
+	        padding: 30px; 
+	        margin: auto;
+	        margin-top: 50px;
+	        background-color: white;
+	        border-radius: 8px;
+	        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+	    }
+	    .custom-input {
+	        margin-bottom: 10px;
+	    }
+	    .custom-submit {
+	        background-color: #8B4513;
+	        color: white;
+	        border: none;
+	        padding: 10px 20px;
+	        margin-top: 10px;
+	        width: 100%;
+	        border-radius: 4px;
+	        cursor: pointer;
+	    }
+	    .custom-submit:hover {
+	        background-color: #A0522D;
+	    }
     </style>
 </head>
 <body>
@@ -56,10 +64,10 @@
     <div class="container">
         <h2>Welcome to Your Dashboard, ${sessionScope.userId}!</h2>
 
-        <div>
+        <div class="container form-container">
         <form action="listbystring" method="get" class="search-form">
             <input type="text" name="searchString" placeholder="Search for books...">
-            <button type="submit">Search</button>
+            <button class="btn custom-submit" type="submit">Search</button>
         </form>
         </div>
         

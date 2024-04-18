@@ -9,7 +9,7 @@
     <title>List of Books</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Lora', serif;
             background-color: #f4f4f4;
             margin: 0;
             padding: 0;
@@ -59,7 +59,6 @@
                 </tr>
             </thead>
             <tbody>
-                <!-- Loop through each book in the bookList -->
                 <c:forEach var="user" items="${userlist}">
                     <tr>
                         <td>${user.userId}</td>

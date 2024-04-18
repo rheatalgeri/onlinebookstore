@@ -4,7 +4,7 @@
 <head>
 <title>Bookstore Dashboard</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<!-- Include Bootstrap CSS from CDN and a Google Font that fits a bookstore theme -->
+
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&display=swap" rel="stylesheet">
 <style>
@@ -12,13 +12,13 @@
         margin-bottom: 16px;
     }
     body {
-        font-family: 'Lora', serif; /* This is a font that gives a more traditional book printing look */
+        font-family: 'Lora', serif;
     }
     .navbar {
-        background-color: #8B4513; /* A deep brown color reminiscent of book leather */
+        background-color: #8B4513; 
     }
     .navbar-brand, .nav-link {
-        color: #FFF8DC !important; /* A light creamy color for text to stand out */
+        color: #FFF8DC !important; 
     }
 </style>
 </head>
@@ -61,7 +61,7 @@
     </nav>
 </header>
 
-<!-- Include Bootstrap JS and its dependencies -->
+
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>

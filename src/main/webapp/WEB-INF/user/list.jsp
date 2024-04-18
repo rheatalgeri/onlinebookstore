@@ -59,6 +59,7 @@
     <jsp:include page="header.jsp"></jsp:include>
     <div class="container">
         <h1>List of Books</h1>
+         <div class="response-message" style="display: none; color: green; text-align: center; margin-bottom: 20px;"></div>
         <table class="table">
             <thead>
                 <tr>
@@ -71,22 +72,29 @@
             </thead>
 				<tbody>
 				    <c:forEach var="book" items="${booklist}">
-				        <tr>
-				            <td>${book.bookId}</td>
-				            <td>${book.name}</td>
-				            <td>${book.description}</td>
-				            <td><fmt:formatNumber value="${book.price}" pattern="#,##0.00"/></td>
-				            <td>                    
-								<form class="add-to-cart-form" action="${pageContext.request.contextPath}/addtocart" method="post">
-								    <input type="hidden" name="bookId" value="${book.bookId}">
-								    <input type="number" name="quantity" min="1" value="1" class="form-control" style="width: 60px; display: inline-block; margin-right: 10px;">
-								    <button type="submit" class="btn btn-primary btn-sm">
-								        <i class="fas fa-shopping-cart"></i> Add to Cart
-								    </button>
-								</form>              
-				            </td>
-				        </tr>
+				    
+					        <tr>
+					        
+					            <td>${book.bookId}</td>
+					            <td><a href="${pageContext.request.contextPath}/viewbook?bookId=${book.bookId}" style="text-decoration: none; color: inherit;">
+					            ${book.name} </a></td>
+					            <td>${book.description}</td>
+					            <td><fmt:formatNumber value="${book.price}" pattern="#,##0.00"/></td>
+					           
+					            <td>                    
+									<form class="add-to-cart-form" action="${pageContext.request.contextPath}/addtocart" method="post">
+									    <input type="hidden" name="bookId" value="${book.bookId}">
+									    <input type="number" name="quantity" min="1" value="1" class="form-control" style="width: 60px; display: inline-block; margin-right: 10px;">
+									    <button type="submit" class="btn btn-primary btn-sm">
+									        <i class="fas fa-shopping-cart"></i> Add to Cart
+									    </button>
+									</form>              
+					            </td>
+					            
+					        </tr>
+				        
 				    </c:forEach>
+				    
 				</tbody>
         </table>
     </div>
@@ -96,20 +104,35 @@
 <script>
 $(document).ready(function() {
     $('.add-to-cart-form').on('submit', function(e) {
-        e.preventDefault(); // Stop the form from submitting normally
+        e.preventDefault();
 
         var $form = $(this);
-        var formData = $form.serialize(); // Grab all the data in the form
+        var formData = $form.serialize();
 
         $.ajax({
             type: 'POST',
             url: $form.attr('action'),
             data: formData,
             success: function(response) {
-                $form.next('.response-message').text('Item added to cart').css('display', 'block');
+                // Display the response message and ensure it is visible
+                var $responseMessage = $('.response-message');
+                $responseMessage.text('Item added to cart').css({
+                    'display': 'block',
+                    'color': 'green'  // Optional: Change color based on success
+                });
+
+                // Hide the message after 2000 milliseconds (2 seconds)
+                setTimeout(function() {
+                    $responseMessage.fadeOut();  // Using fadeOut for a smooth disappearance
+                }, 2000);
             },
             error: function() {
-                $form.next('.response-message').text('Failed to add item to cart').css('display', 'block');
+                console.error('Failed to add item to cart');
+                // Display error message
+                $('.response-message').text('Failed to add item to cart').css({
+                    'display': 'block',
+                    'color': 'red'  // Optional: Change color based on error
+                });
             }
         });
     });

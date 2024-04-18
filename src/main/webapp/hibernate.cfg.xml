@@ -4,22 +4,15 @@
         "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
     <session-factory>
-        <!-- Database connection settings -->
+
         <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
         <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/onlinebs?sslMode=DISABLED</property>
         <property name="hibernate.connection.username">root</property>
         <property name="hibernate.connection.password">1234</property>
         
-        <!-- SQL dialect for your database -->
         <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
-        
-        <!-- Mapping files -->
-        <!-- Add your mapping files here -->
-        
-        <!-- Echo all executed SQL to stdout -->
         <property name="show_sql">true</property>
         
-        <!-- Drop and recreate the database schema on startup -->
         <property name="hbm2ddl.auto">update</property>
     </session-factory>
 </hibernate-configuration>

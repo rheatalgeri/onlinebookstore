@@ -6,7 +6,6 @@
 <meta charset="UTF-8">
 <title>New User</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<!-- Include Bootstrap CSS from CDN and a Google Font that fits a bookstore theme -->
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&display=swap" rel="stylesheet">
 <style>
@@ -15,7 +14,7 @@
     }
     body {
         font-family: 'Lora', serif; 
-        background-color: #f4f4f4; /* soft background color */
+        background-color: #f4f4f4;
     }
     .navbar {
         background-color: #8B4513; 
@@ -24,34 +23,34 @@
         color: #FFF8DC !important; 
     }
     .form-container {
-        max-width: 400px; /* Fixed width for larger screens */
+        max-width: 400px;
         padding: 30px; 
-        margin: auto; /* Center the form on the page */
-        margin-top: 50px; /* Add some top margin for aesthetics */
-        background-color: white; /* Background color for the form */
-        border-radius: 8px; /* Rounded corners for the form */
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+        margin: auto;
+        margin-top: 50px;
+        background-color: white;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     }
     .custom-input {
-        margin-bottom: 10px; /* Space out the inputs */
+        margin-bottom: 10px;
     }
     .custom-submit {
-        background-color: #8B4513; /* Button color to match navbar */
+        background-color: #8B4513;
         color: white;
         border: none;
-        padding: 10px 20px; /* Larger button padding */
-        margin-top: 10px; /* Space above the button */
-        width: 100%; /* Full-width button */
-        border-radius: 4px; /* Match the form border radius */
+        padding: 10px 20px;
+        margin-top: 10px;
+        width: 100%;
+        border-radius: 4px;
         cursor: pointer;
     }
     .custom-submit:hover {
-        background-color: #A0522D; /* Slightly darker on hover */
+        background-color: #A0522D;
     }
 </style>
 </head>
 <body>
-<jsp:include page="header.jsp"></jsp:include>
+<jsp:include page="/WEB-INF/header.jsp"></jsp:include>
 <div class="container form-container">
     <h2 class="text-center">Create Your Account</h2>
     <form action="createuser" method="get">

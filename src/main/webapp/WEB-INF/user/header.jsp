@@ -42,7 +42,6 @@
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item"><a class="nav-link" aria-current="page" href="<%=request.getContextPath()%>/backtouserdashboard">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="<%=request.getContextPath()%>/userorders">Order History</a></li>
-                    <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/getbestsellers">Best Sellers</a></li>
 				    <li class="nav-item">
 				        <a href="<%=request.getContextPath()%>/view" class="nav-link"><i class="fas fa-shopping-cart"></i> Cart</a>
 				    </li>
@@ -59,7 +58,6 @@
     </nav>
 </header>
 
-<!-- Include Bootstrap JS and its dependencies -->
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>

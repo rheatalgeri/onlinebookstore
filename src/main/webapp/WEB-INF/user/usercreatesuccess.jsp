@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bookstore - User Created Successfully</title>
-    <!-- Include Bootstrap CSS and Google Fonts for styling -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&display=swap" rel="stylesheet">
     <style>
@@ -32,7 +31,6 @@
             text-align: center;
             color: #007bff;
         }
-        /* Add more styling here as needed */
     </style>
 </head>
 <body>
@@ -40,8 +38,7 @@
     <div class="container">
         <h1>Account creation is successful!</h1>
         <p>You can now login to your account! </p>
-    </div>
-    
+    </div>    
 <jsp:include page="../footer.jsp"></jsp:include>    
 </body>
 </html>
