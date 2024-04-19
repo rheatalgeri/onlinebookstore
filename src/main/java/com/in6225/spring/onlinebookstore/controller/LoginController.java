@@ -62,6 +62,11 @@ public class LoginController {
     @GetMapping("/login")
     public String showLoginPage() {
         return "login";
+    }
+    
+    @GetMapping("/Bookstore")
+    public String showBookstorePage() {
+        return "index";
     }    
 }
 

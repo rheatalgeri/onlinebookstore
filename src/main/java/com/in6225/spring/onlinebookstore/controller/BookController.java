@@ -72,5 +72,13 @@ public class BookController {
 		} catch (Exception e) {
 			return "admin/bookcreatefailure";
 		}
+    }
+	
+    @GetMapping("/listbystringnologin")
+    private String filterBooksBasedOnStringNoLogin(@RequestParam("searchString") String searchString, Model model) {
+        System.out.println("inside filter method in bookcontroller");
+        List<Book> filteredBooks = bookDAO.searchBySubstring(searchString);
+        model.addAttribute("booklist", filteredBooks);
+        return "list";
     }	
 }
