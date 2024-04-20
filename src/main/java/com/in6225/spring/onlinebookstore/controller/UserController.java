@@ -5,11 +5,13 @@ import java.sql.SQLException;
 import java.util.List;
 
 import javax.servlet.ServletException;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.in6225.spring.onlinebookstore.dao.UserDao;
@@ -33,7 +35,7 @@ public class UserController {
 		return "admin/admindashboard";
 	}	
 	
-	@GetMapping("/createuser")
+	@PostMapping("/createuser")
     public String createUser(@RequestParam("userId") String userId, @RequestParam("password") String password, @RequestParam("contactNo") String contactNo, @RequestParam("email") String email, @RequestParam("name") String name ) {
 		try {
 			userDao.createUser(userId, password, contactNo, email, name);
@@ -51,6 +53,14 @@ public class UserController {
         List<User> userlist = userDao.getAllUsers();
         model.addAttribute("userlist", userlist);
         return "admin/userlist";
+    }
+    
+    @PostMapping("/deleteuser")
+    public String deleteCartItem(@RequestParam("userId") String userId) {
+    	System.out.println(userId);
+    	userDao.deleteUser(userId);
+        return "redirect:/getallusers";
+        
     }
 }
 

@@ -2,6 +2,10 @@ package com.in6225.spring.onlinebookstore.model;
 
 import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
+@Entity
+@Table(name="users")
 public class User {
 
 	private String userId;

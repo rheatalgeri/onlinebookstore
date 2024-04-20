@@ -27,7 +27,7 @@
     <jsp:include page="header.jsp"></jsp:include>
     <div class="container">
         <h1>Order Confirmed</h1>
-        <p>Your order has been successfully confirmed. Thank you for shopping with us!</p>
+        <p>Your order has been successfully confirmed. Thank you for shopping with us! Unfortunately only payment on pick up is available currently.</p>
         <a href="<%=request.getContextPath()%>/backtouserdashboard">Go back to Home</a>
     </div>
     <jsp:include page="../footer.jsp"></jsp:include>

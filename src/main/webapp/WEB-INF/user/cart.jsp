@@ -34,21 +34,21 @@
 .table th, .table td {
     padding: 8px;
     text-align: left;
-    border-bottom: 1px solid #decba4; /* Light brown border */
+    border-bottom: 1px solid #decba4;
 }
 
 .table th {
-    background-color: #8b4513; /* Saddle brown */
+    background-color: #8b4513;
     color: white;
 }
 
 .btn-primary {
-    background-color: #6b4f39; /* Dark brown */
+    background-color: #6b4f39;
     border: none;
 }
 
 .btn-primary:hover {
-    background-color: #563a2c; /* Darker shade for hover */
+    background-color: #563a2c;
 }
 
 .btn-danger {
@@ -57,21 +57,21 @@
 }
 
 .btn-danger:hover {
-    background-color: darkred; /* Darker red on hover */
+    background-color: darkred;
 }
 
 .btn-success {
-    background-color: #4caf50; /* Green for success actions like checkout */
+    background-color: #4caf50;
     border-color: #4caf50;
 }
 
 .btn-success:hover {
-    background-color: #43a047; /* Darker green on hover */
+    background-color: #43a047;
 }
 
 .alert-info {
-    background-color: #f4e8d4; /* Very light brown */
-    color: #8b4513; /* Text color to match brown theme */
+    background-color: #f4e8d4; 
+    color: #8b4513;
     padding: 10px;
     border-radius: 4px;
     border: 1px solid #decba4;
@@ -99,7 +99,7 @@
                     <td>${cartItem.bookId}</td>
                     <td>${cartItem.bookName}</td>
                     <td>${cartItem.quantity}</td>
-                    <td>${cartItem.price}</td>
+                    <td><fmt:formatNumber value="${cartItem.price}" pattern="#,##0.00"/></td>
                     <td>
                      <div style="display: flex; align-items: center; gap: 10px;">
                         <form action="${pageContext.request.contextPath}/addtocart" method="post">

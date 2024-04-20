@@ -27,17 +27,23 @@
             margin-bottom: 20px;
             color: #8B4513;
         }
-        p {
-            text-align: center;
-            color: #007bff;
-        }
+		.centered-link {
+			text-align: center;
+			display: block;
+			color: #8B4513;
+			text-decoration: none;
+		}
+		
+		.centered-link:hover {
+			text-decoration: underline;
+		}
     </style>
 </head>
 <body>
 <jsp:include page="../header.jsp"></jsp:include>
     <div class="container">
         <h1>Account creation failed</h1>
-        <p>Please try again :(</p>
+        <p><a href="createuser.jsp" class="centered-link">Please try again :(</a></p>
     </div>
     
 <jsp:include page="../footer.jsp"></jsp:include>    

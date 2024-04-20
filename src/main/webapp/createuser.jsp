@@ -53,7 +53,7 @@
 <jsp:include page="/WEB-INF/header.jsp"></jsp:include>
 <div class="container form-container">
     <h2 class="text-center">Create Your Account</h2>
-    <form action="createuser" method="get">
+    <form action="createuser" method="post">
         <input type="text" class="form-control custom-input" name="userId" placeholder="Username" required>
         <input type="password" class="form-control custom-input" name="password" placeholder="Password" required>
         <input type="text" class="form-control custom-input" name="contactNo" placeholder="Phone Number" required>

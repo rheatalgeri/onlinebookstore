@@ -41,7 +41,7 @@
 <jsp:include page="header.jsp"></jsp:include>
 <body>
     <div class="container">
-        <h2>Login</h2>
+        <h2>Login Test</h2>
         <c:if test="${not empty error}">
             <p style="color: red;">${error}</p>
         </c:if>        
