@@ -8,7 +8,7 @@ import java.time.LocalDate;
 
 public class JDBCUtils {
 
-	private static String jdbcURL = "jdbc:mysql://localhost:3306/onlinebs?serverTimezone=UTC";
+	private static String jdbcURL = "jdbc:mysql://db:3306/onlinebs?serverTimezone=UTC";
 	private static String jdbcUsername = "root";
 	private static String jdbcPassword = "1234";
 

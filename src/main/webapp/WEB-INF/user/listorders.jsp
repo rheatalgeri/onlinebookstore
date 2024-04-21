@@ -6,14 +6,12 @@
 <head>
     <title>Order List</title>
     <style>
-        body {
-            font-family: 'Lora', serif;
-            background-color: #fafafa;
-            color: #333;
-            line-height: 1.6;
-            margin: 0;
-            padding: 20px;
-        }
+                    body {
+                        font-family: 'Lora', serif;
+                        background-color: #f4f4f4;
+                        margin: 0;
+                        padding: 0;
+                    }
         h1, h2, h3 {
             font-family: 'Lora', serif;
             color: #5D4037;
