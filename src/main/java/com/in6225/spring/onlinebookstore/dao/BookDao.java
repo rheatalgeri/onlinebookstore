@@ -1,7 +1,6 @@
 package com.in6225.spring.onlinebookstore.dao;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import org.springframework.stereotype.Repository;
@@ -12,7 +11,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import com.in6225.spring.onlinebookstore.model.Book;
-import com.in6225.spring.onlinebookstore.model.OrderBook;
 import com.in6225.spring.onlinebookstore.utils.JDBCUtils;
 
 @Repository
@@ -20,7 +18,6 @@ public class BookDao {
 
 	private static final String GET_BOOKS_BY_STRING = "SELECT bookId, name, price, description FROM book WHERE name LIKE ?";
 	private static final String GET_ALL_BOOKS = "SELECT bookId, name, price, description FROM book";
-    private static final String BEST_SELLERS_QUERY = "SELECT bookId, SUM(quantity) AS total_sold FROM orders GROUP BY bookId ORDER BY total_sold DESC LIMIT 3";
     private static final String GET_BOOKS_BY_ID = "SELECT name, price, description FROM book WHERE bookId LIKE ?";
     private static final String ADD_NEW_BOOK = "INSERT INTO book (name, description, price) VALUES (?, ?, ?)";
     public List<Book> getAllBooks() {
@@ -51,14 +48,14 @@ public class BookDao {
 			searchString = "%" + searchString + "%";
 			preparedStatement.setString(1, searchString);
 			ResultSet rs = preparedStatement.executeQuery();
-			System.out.println(rs);
+			//System.out.println(rs);
 			while (rs.next()) {
 				Long bookId = rs.getLong("bookId");
 				String name = rs.getString("name");
 				Double price = rs.getDouble("price");
 				String description = rs.getString("description");
 				books.add(new Book(bookId, name, price, description));
-				System.out.println(bookId+" "+name+" "+price+" "+description);
+				//System.out.println(bookId+" "+name+" "+price+" "+description);
 			}
 		} catch (SQLException exception) {
 			JDBCUtils.printSQLException(exception);

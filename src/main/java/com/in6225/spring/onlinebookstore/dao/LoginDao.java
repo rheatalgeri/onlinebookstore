@@ -23,10 +23,9 @@ public class LoginDao {
 				preparedStatement.setString(2, loginBean.getPassword());
 
 				try (ResultSet resultSet = preparedStatement.executeQuery()) {
-					return resultSet.next(); // If a matching user is found, return true
+					return resultSet.next();
 				}
 			} catch (SQLException exception) {
-				// Handle database errors
 				exception.printStackTrace();
 			}
 
