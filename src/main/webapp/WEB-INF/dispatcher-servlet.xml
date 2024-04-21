@@ -25,7 +25,7 @@
 	<bean
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource"
 		name="dataSource" p:driverClassName="com.mysql.cj.jdbc.Driver"
-		p:url="jdbc:mysql://db/onlinebs?useSSL=false" p:username="root"
+		p:url="jdbc:mysql://host.docker.internal/onlinebs?useSSL=false" p:username="root"
 		p:password="1234" />	
 		
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
